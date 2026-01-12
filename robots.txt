@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://reshavastra.in/sitemap.xml
+Sitemap: https://reshavastra.com/sitemap.xml

@@ -6,7 +6,7 @@ All product data, images, and configuration are managed via Google Sheets.
 ---
 
 ## 🌐 Website
-https://reshavastra.in
+https://reshavastra.com
 
 ---
 

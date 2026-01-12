@@ -21,7 +21,8 @@ fetch(CSV_URL)
     let found = false;
 
     parseCSV(csv).forEach(c => {
-      if ((c[7] || "").toLowerCase().trim() !== "active") return;
+      const status = (c[7] || "").toLowerCase().trim();
+      if (status === "inactive") return;
       if (c[0] !== id) return;
 
       found = true;
@@ -51,10 +52,20 @@ fetch(CSV_URL)
       images.forEach(u => {
         imageContainer.innerHTML += `<img loading="lazy" src="${u.trim()}">`;
       });
+
+      /* ✅ SOLD OUT HANDLING (CORRECT PLACE) */
+      if (status === "soldout") {
+        const buyBtn = document.querySelector(".buy-btn");
+        buyBtn.innerText = "Sold Out";
+        buyBtn.disabled = true;
+        buyBtn.style.opacity = "0.6";
+        buyBtn.style.cursor = "not-allowed";
+      }
     });
 
     if (!found) {
-      document.body.innerHTML = "<h2 style='text-align:center'>Product not found</h2>";
+      document.body.innerHTML =
+        "<h2 style='text-align:center'>Product not found</h2>";
     }
   });
 
@@ -71,7 +82,7 @@ window.sendWhatsAppOrder = () => {
   const phone = custPhone.value.trim();
   const address = custAddress.value.trim();
 
-  // ✅ PHONE VALIDATION
+  /* PHONE VALIDATION */
   if (!/^[0-9]{10}$/.test(phone)) {
     alert("Please enter a valid 10-digit mobile number");
     custPhone.focus();
@@ -83,7 +94,7 @@ window.sendWhatsAppOrder = () => {
     return;
   }
 
-  /* ===== ORDER DATE & NUMBER ===== */
+  /* ORDER DATE & NUMBER */
   const today = new Date();
   const dateStr = today.toLocaleDateString("en-IN", {
     day: "2-digit",
@@ -91,7 +102,7 @@ window.sendWhatsAppOrder = () => {
     year: "numeric"
   });
 
-  const todayKey = today.toISOString().slice(0, 10); // yyyy-mm-dd
+  const todayKey = today.toISOString().slice(0, 10);
   const saved = JSON.parse(localStorage.getItem("rv_orders") || "{}");
 
   if (saved.date !== todayKey) {
@@ -105,7 +116,6 @@ window.sendWhatsAppOrder = () => {
 
   const orderNumber = saved.count;
 
-  /* ===== WHATSAPP MESSAGE ===== */
   const msg = `
 🧵 New Order – Resha Vastra
 
@@ -126,5 +136,3 @@ ${address}
     "_blank"
   );
 };
-
-

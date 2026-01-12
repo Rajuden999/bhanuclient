@@ -560,3 +560,66 @@ section {
   resize: none;
   min-height: 90px;
 }
+/* =====================
+   HORIZONTAL CATEGORY (SPECIAL)
+===================== */
+.horizontal-scroll {
+  display: flex !important;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: #c9a3a3;
+  border-radius: 10px;
+}
+
+.horizontal-scroll .product-card {
+  min-width: 160px;
+  flex-shrink: 0;
+}
+/* AUTO SCROLL ANIMATION */
+@keyframes autoScrollX {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* enable auto scroll */
+.horizontal-scroll.auto-scroll {
+  width: max-content;
+  animation: autoScrollX 25s linear infinite;
+}
+/* =====================
+   GLOBAL WATERMARK
+===================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: var(--site-watermark);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 280px;
+
+  opacity: 0.04;   /* very light */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* keep content above watermark */
+body > * {
+  position: relative;
+  z-index: 1;
+}

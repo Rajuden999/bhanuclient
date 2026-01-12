@@ -29,7 +29,9 @@ fetch(PRODUCT_CSV)
   .then(r => r.text())
   .then(csv => {
     parseCSV(csv).forEach(c => {
-      if ((c[7] || "").toLowerCase().trim() !== "active") return;
+     const status = (c[7] || "").toLowerCase().trim();
+if (status === "inactive") return;
+
       if (!c[2]) return;
 
       const price = Number(c[4]);
@@ -46,7 +48,8 @@ fetch(PRODUCT_CSV)
         image: c[3].split("||")[0],
         price,
         offer,
-        finalPrice
+        finalPrice,
+        status:status
       };
 
       allProductsData.push(product);
@@ -99,6 +102,11 @@ function buildCategorySections() {
     `;
 
     const grid = section.querySelector(".products");
+    // Make only one category horizontal
+if (cat === "wow deals") {
+  grid.classList.add("horizontal-scroll","auto-scroll");
+}
+
     categoryMap[cat].forEach(p => grid.appendChild(productCard(p)));
 
     categorySections.appendChild(section);
