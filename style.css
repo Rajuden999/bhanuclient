@@ -1,3 +1,25 @@
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+section,
+.banner,
+.products,
+.product-details,
+.category-grid {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* =====================
    BASE
 ===================== */
