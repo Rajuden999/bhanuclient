@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product | Resha Vastra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <a href="index.html">← Back</a>
+  </div>
+  <div class="header-center">
+    <h1>Resha Vastra</h1>
+  </div>
+</header>
+
+<section class="product-details">
+  <div class="product-images" id="imageContainer"></div>
+
+  <div class="product-info">
+    <h2 id="productName">Loading...</h2>
+    <div class="price-box" id="productPrice"></div>
+    <div class="offer" id="productOffer"></div>
+    <button class="buy-btn" onclick="openPopup()">Buy Now</button>
+    <p id="productDesc"></p>
+  </div>
+</section>
+
+<div class="popup" id="orderPopup">
+  <div class="popup-box">
+    <h3>Place Your Order</h3>
+    <p class="popup-sub">We will contact you on WhatsApp</p>
+
+    <input id="custName" placeholder="Full Name" />
+    <input id="custPhone" placeholder="Mobile Number" />
+    <textarea id="custAddress" placeholder="Delivery Address"></textarea>
+<p style="font-size:13px; color:#666; text-align:center; margin:10px 0;">
+  By placing this order, you agree to our
+  <a href="terms.html" target="_blank" style="color:#8b0000; text-decoration:none;">
+    Terms & Conditions
+  </a>
+</p>
+\   <button class="popup-buy" onclick="sendWhatsAppOrder()">Send Order</button>
+    <button class="popup-cancel" onclick="closePopup()">Cancel</button>
+  </div>
+</div>
+
+<script type="module" src="js/product.js"></script>
+</body>
+</html>

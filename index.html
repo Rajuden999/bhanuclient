@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resha Vastra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Resha Vastra – Premium boutique sarees. Order via WhatsApp." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <img id="siteLogo" alt="Logo" />
+  </div>
+
+  <div class="header-center">
+    <h1 id="siteName">Resha Vastra</h1>
+  </div>
+
+  <div class="header-right">
+    <input id="searchInput" placeholder="Search sarees..." />
+  </div>
+ 
+</header>
+ <select id="priceSort">
+  <option value="">Sort by Price</option>
+  <option value="low">Low to High</option>
+  <option value="high">High to Low</option>
+</select>
+
+<section class="banner" id="banner">
+  <div class="banner-overlay">
+   
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Shop by Category</h2>
+  <div class="category-grid" id="categoryGrid"></div>
+</section>
+
+<section>
+  <h2 class="section-title">Special Offers</h2>
+  <div class="special-offer-wrapper">
+    <div class="special-offer-track" id="special-offers"></div>
+  </div>
+</section>
+
+<!-- CATEGORY SECTIONS -->
+<section id="allProducts"></section>
+
+<!-- ALL PRODUCTS (SEARCH + SORT) -->
+<section id="all-products-view">
+  <h2 class="section-title">All Products</h2>
+  <div class="products" id="allProductsGrid"></div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-links">
+      <a id="footerWhatsapp" target="_blank">WhatsApp</a>
+    <a id="footerInstagram" target="_blank">Instagram</a>
+    <a id="footerEmail">Email</a>
+      <p><a href="terms.html">Terms & Conditions</a></p>
+      <p>© Resha Vastra. All rights reserved.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/settings.js"></script>
+<script type="module" src="js/home.js"></script>
+</body>
+</html>
