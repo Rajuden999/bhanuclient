@@ -229,3 +229,4 @@ function normalize(text) {
     .replace(/\s+/g, " ")
     .trim();
 }
+

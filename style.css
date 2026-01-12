@@ -582,45 +582,7 @@ section {
   resize: none;
   min-height: 90px;
 }
-/* =====================
-   HORIZONTAL CATEGORY (SPECIAL)
-===================== */
-.horizontal-scroll {
-  display: flex !important;
-  gap: 14px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 10px;
-}
 
-.horizontal-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-
-.horizontal-scroll::-webkit-scrollbar-thumb {
-  background: #c9a3a3;
-  border-radius: 10px;
-}
-
-.horizontal-scroll .product-card {
-  min-width: 160px;
-  flex-shrink: 0;
-}
-/* AUTO SCROLL ANIMATION */
-@keyframes autoScrollX {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* enable auto scroll */
-.horizontal-scroll.auto-scroll {
-  width: max-content;
-  animation: autoScrollX 25s linear infinite;
-}
 /* =====================
    GLOBAL WATERMARK
 ===================== */
@@ -644,4 +606,92 @@ body::before {
 body > * {
   position: relative;
   z-index: 1;
+}
+
+/* =====================
+   WOW DEALS – FINAL FIX
+===================== */
+
+/* override products grid ONLY for wow deals */
+.products.horizontal-scroll {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 16px;
+  width: max-content;
+  overflow: visible;
+}
+
+/* product card sizing */
+.products.horizontal-scroll .product-card {
+  flex: 0 0 170px;
+}
+
+/* auto scroll animation */
+.products.horizontal-scroll.auto-scroll {
+  animation: wowScroll 28s linear infinite;
+}
+
+/* animation */
+@keyframes wowScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =====================
+   MOBILE FIX (CRITICAL)
+===================== */
+@media (max-width: 768px) {
+
+  .products.horizontal-scroll {
+    gap: 12px;
+  }
+
+  .products.horizontal-scroll .product-card {
+    flex: 0 0 150px;
+  }
+
+  /* STOP PAGE CUTTING */
+  section {
+    overflow-x: hidden;
+  }
+}
+/* =====================
+   HEADER NAV (HOME / CONTACT)
+===================== */
+.header-nav {
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.header-nav a {
+  font-size: 13px;
+  color: #7a1f1f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header-nav a:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .header-nav {
+    gap: 12px;
+  }
+}
+/* =====================
+   FOOTER ADDRESS
+===================== */
+.footer-address {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #fff;
 }
